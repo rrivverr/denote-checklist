@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>프로젝트 체크리스트</title>
+  <style>
+    :root{--ink:#202821;--muted:#778078;--line:#e6e8e1;--paper:#fff;--wash:#f6f5f1;--green:#285d47;--green2:#e8f2ec;--gold:#c58a3d;--shadow:0 12px 40px #29382c10}
+    *{box-sizing:border-box}body{margin:0;background:var(--wash);color:var(--ink);font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+    .shell{min-height:100vh;display:grid;grid-template-columns:300px 1fr}.side{background:#f0efe9;border-right:1px solid var(--line);padding:26px 18px;display:flex;flex-direction:column;gap:22px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.logo{width:38px;height:38px;border-radius:12px;background:var(--green);color:white;display:grid;place-items:center;font-weight:800;letter-spacing:-1px}.brand strong{font-size:15px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:1px}.side-head{display:flex;align-items:center;justify-content:space-between;padding:0 9px;color:#6c756d;font-size:11px;font-weight:750;letter-spacing:.11em;text-transform:uppercase}.iconbtn{border:0;background:transparent;color:var(--green);font-size:23px;width:32px;height:32px;border-radius:9px}.iconbtn:hover{background:#e0e7df}.project-list{display:flex;flex-direction:column;gap:6px}.project-link{width:100%;text-align:left;border:0;background:transparent;padding:12px 12px;border-radius:11px;color:var(--ink)}.project-link:hover{background:#e7e9e1}.project-link.active{background:#fff;box-shadow:0 3px 12px #1722160d}.project-link b{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.project-link span{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px;margin-top:5px}.mini-track{height:4px;background:#e8e9e4;border-radius:5px;width:66px;overflow:hidden}.mini-track i{display:block;height:100%;background:var(--green);border-radius:5px}.side-foot{margin-top:auto;padding:13px 11px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+    main{padding:36px clamp(22px,5vw,72px) 70px;max-width:1500px;width:100%;margin:0 auto}.topline{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;margin-bottom:27px}.crumb{display:flex;gap:8px;align-items:center}.crumb b{color:var(--green);font-weight:650}.main-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:26px}.eyebrow{font-size:11px;color:var(--green);font-weight:750;letter-spacing:.12em;text-transform:uppercase}.title{font-size:clamp(27px,4vw,38px);line-height:1.18;letter-spacing:-.04em;margin:7px 0 8px}.sub{color:var(--muted);margin:0}.primary{border:0;background:var(--green);color:#fff;padding:12px 17px;border-radius:10px;font-size:13px;font-weight:700;box-shadow:0 5px 12px #285d4728}.primary:hover{background:#1d4b38;transform:translateY(-1px)}
+    .summary{display:grid;grid-template-columns:1.35fr .8fr .8fr;gap:12px;margin-bottom:24px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:17px 19px;box-shadow:var(--shadow)}.stat label{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:21px;letter-spacing:-.03em;margin-top:4px}.stat-main{display:flex;justify-content:space-between;align-items:center;gap:14px}.progress-ring{width:50px;height:50px;border-radius:50%;background:conic-gradient(var(--green) var(--p,0%),#e8ebe5 0);display:grid;place-items:center;flex:none}.progress-ring:after{content:attr(data-value);background:#fff;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:750;color:var(--green)}
+    .filters{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;padding:16px;background:#eeeee8;border:1px solid #e5e6de;border-radius:14px;margin-bottom:15px}.field{min-width:145px;flex:1}.field label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:750;color:#657067;margin:0 0 6px 2px}.field select,.field input{width:100%;border:1px solid #dfe2da;background:#fff;border-radius:9px;padding:10px 11px;color:var(--ink);outline:none}.field select:focus,.field input:focus{border-color:#77a18b;box-shadow:0 0 0 3px #dcebe1}.clear{border:1px solid #d8ddd5;background:transparent;border-radius:9px;padding:10px 12px;color:#536057;font-size:12px}
+    .list-top{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 12px}.list-top strong{font-size:14px}.list-top span{color:var(--muted);font-size:12px}.checklist{display:flex;flex-direction:column;gap:9px}.check{background:var(--paper);border:1px solid var(--line);border-radius:13px;box-shadow:0 2px 8px #17221605;overflow:hidden}.check-row{display:grid;grid-template-columns:25px minmax(0,1fr) auto;gap:13px;align-items:start;padding:15px 17px}.check input{appearance:none;width:19px;height:19px;border:1.5px solid #b8c1b8;border-radius:6px;margin:2px 0 0;display:grid;place-items:center;cursor:pointer}.check input:checked{background:var(--green);border-color:var(--green)}.check input:checked:after{content:"✓";font-size:13px;color:white;font-weight:800}.check-title{font-weight:650;font-size:14px;line-height:1.4}.check.done .check-title{color:#89938a;text-decoration:line-through}.tag{background:var(--green2);border-radius:30px;padding:4px 9px;color:var(--green);font-size:10px;font-weight:700;white-space:nowrap}.detail{border-top:1px solid #f0f1ec;padding:12px 18px 15px 55px;color:#626d64;font-size:12px}.detail ul{margin:0;padding-left:17px}.detail p{margin:0}.detail.missing{color:#9aa19a;font-style:italic}.empty{background:#fff;border:1px dashed #d5dcd3;border-radius:15px;padding:55px 20px;text-align:center;color:var(--muted)}.empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}.footer-note{font-size:11px;color:#929a92;margin-top:16px}
+    dialog{border:0;border-radius:18px;padding:0;width:min(560px,calc(100vw - 28px));box-shadow:0 24px 90px #1118}dialog::backdrop{background:#17211980;backdrop-filter:blur(3px)}.modal{padding:26px}.modal h2{margin:0 0 5px;font-size:22px;letter-spacing:-.03em}.modal p{margin:0 0 20px;color:var(--muted);font-size:13px}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal-grid .wide{grid-column:1/-1}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.secondary{border:1px solid var(--line);background:#fff;color:#4c594f;padding:11px 15px;border-radius:9px}.mobile-top{display:none}
+    @media(max-width:850px){.shell{grid-template-columns:1fr}.side{padding:12px 14px;position:sticky;top:0;z-index:2;border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:9px 12px}.brand{padding:0}.side-head{display:none}.project-list{grid-column:1/-1;display:flex;flex-direction:row;overflow:auto;gap:6px;padding-bottom:1px}.project-link{min-width:150px;padding:9px 10px}.side-foot{display:none}main{padding:24px 16px 50px}.topline{margin-bottom:18px}.summary{grid-template-columns:1fr 1fr}.summary .stat:first-child{grid-column:1/-1}.main-head{align-items:center}.filters{gap:8px}.field{min-width:calc(50% - 8px)}.check-row{padding:14px 12px;gap:10px}.tag{font-size:9px}.detail{padding-left:45px}}
+    @media(max-width:480px){.sub{font-size:13px}.main-head .primary{padding:10px 12px}.field{min-width:100%}.summary{gap:8px}.stat{padding:13px}.stat strong{font-size:18px}.modal-grid{grid-template-columns:1fr}.modal-grid .wide{grid-column:auto}.topline .helper{display:none}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><div class="logo">D</div><div><strong>Denote 검수</strong><small>프로젝트 체크리스트</small></div></div>
+    <div class="side-head"><span>내 프로젝트</span><button class="iconbtn" id="addProjectTop" aria-label="프로젝트 추가">＋</button></div>
+    <nav class="project-list" id="projectList" aria-label="프로젝트 목록"></nav>
+    <div class="side-foot">프로젝트별 체크 상태와 진행률은 이 브라우저에 자동 저장됩니다.</div>
+  </aside>
+  <main>
+    <div class="topline"><div class="crumb"><span>프로젝트</span><span>›</span><b id="crumbName">프로젝트 선택</b></div><span class="helper">체크리스트 라이브러리는 복제하지 않고 함께 사용해요</span></div>
+    <section id="workspace"></section>
+  </main>
+</div>
+<dialog id="projectDialog"><form class="modal" id="projectForm">
+  <h2>새 프로젝트</h2><p>프로젝트 이름과 분류를 선택하면 맞는 체크리스트가 준비돼요.</p>
+  <div class="modal-grid">
+    <div class="field wide"><label for="pname">프로젝트명</label><input id="pname" required maxlength="80" placeholder="예: 2026 겨울 머그컵"></div>
+    <div class="field"><label for="brand">브랜드</label><select id="brand" required></select></div>
+    <div class="field"><label for="item">품목</label><select id="item" required></select></div>
+    <div class="field"><label for="material">소재</label><select id="material" required></select></div>
+    <div class="field"><label for="pack">패키지</label><select id="pack" required></select></div>
+  </div>
+  <div class="actions"><button type="button" class="secondary" id="cancelProject">취소</button><button class="primary" type="submit">프로젝트 만들기</button></div>
+</form></dialog>
+<script>
+const OPTIONS={
+  brands:['벤츠','BYD','YG'],
+  items:['가방','머그컵','키체인','텀블러','파우치'],
+  materials:['가죽','금속','도자기','패브릭','플라스틱','기타 / 미정'],
+  packages:['PET(투명)','단상자','슬리브','싸바리','없음 / 미정']
+};
+// Notion 원본의 검수 질문을 한 번만 보관하고, 프로젝트의 선택값으로 적용 여부를 계산합니다.
+const LIBRARY=[
+ {id:'final-art',title:'최종 컨펌 시안인가?',detail:'최종 승인된 시안과 작업지시서가 같은 버전인지 확인하세요.'},
+ {id:'previous-work',title:'이전에 제작된 내용이 있다면 그 사양과 내용이 모두 반영되었는가?',detail:'이전 생산본과 변경 요청을 대조해 빠진 수정 사항이 없는지 확인하세요.'},
+ {id:'sample-revisions',title:'샘플 후 본발주라면 수정사항이 모두 업데이트 되었는가?',detail:'샘플 피드백과 최종 작업지시서의 수정 내용을 비교하세요.'},
+ {id:'text-numbers-images',title:'글 / 번호 / 예시 이미지가 서로 모두 일치하는가?',detail:'텍스트에는 봉제선이 없는데 이미지에는 봉제선이 있는 경우처럼 서로 다른 지시가 없는지 확인하세요.'},
+ {id:'image-match',title:'메인 이미지와 확대 및 디테일 이미지가 모두 서로 일치하는가?',detail:'메인 이미지, 확대 이미지, 디테일 이미지의 색상·형태·사양이 동일한지 확인하세요.'},
+ {id:'image-description',title:'첨부한 이미지가 어떤 이미지인지 설명했는가?',detail:'예시 이미지인지, 실제 제작 목표 이미지인지 구분해서 적어 주세요.'},
+ {id:'size',title:'사이즈를 기입했는가?',detail:'가로 × 세로 × 높이(h)를 mm로 기재하고, 내경·외경과 측정 기준을 구분하세요.'},
+ {id:'color',title:'색상을 기재했는가?',detail:'팬톤 번호를 적고, 컬러칩 샘플이 있으면 해당 정보를 함께 표시하세요.'},
+ {id:'material-info',title:'소재 정보를 기입했는가?',detail:'소재 종류와 이름을 확인하고 업계에서 통용되는 표준 용어로 적으세요.',materials:['가죽','금속','도자기','패브릭','플라스틱','기타 / 미정']},
+ {id:'units',title:'치수와 단위를 통일했는가?',detail:'길이 단위를 mm로 통일하고, 숫자 표기와 띄어쓰기 형식을 일관되게 맞추세요.'},
+ {id:'industry-terms',title:'업계 표준 용어를 사용해서 기입했는가?',detail:'제작자가 같은 뜻으로 이해할 수 있도록 통상적인 용어와 영어 표기를 사용하세요.'},
+ {id:'sample-check',title:'샘플에서 확인할 수 있는 내용을 모두 기입했는가?',detail:'실물 샘플에서 확인해야 하는 외관·치수·기능 항목을 빠짐없이 적으세요.'},
+ {id:'manufacturer-ambiguity',title:'제작자가 오해할 수 있는 부분을 고려했는가?',detail:'허용 기준과 불량 판정 기준을 구체적으로 적어 해석 차이를 줄이세요.'},
+ {id:'all-reviewed',title:'기입된 사항들을 모두 검토했는가?',detail:'페이지를 복사했을 때 수치와 단위가 바뀌지 않았는지, 오타가 없는지 확인하세요.'},
+ {id:'art-file',title:'도안 파일을 검토했는가?',detail:'최신 도안 파일인지, 누락된 페이지나 링크가 없는지 확인하세요.'},
+ {id:'guide-art-match',title:'가이드와 도안 파일이 일치하는가?',detail:'작업지시서의 치수·색상·문구가 도안 파일과 일치하는지 확인하세요.'},
+ {id:'logo',title:'로고 삽입 방식을 기재했는가?',detail:'형압(디보스·엠보스), 레이저, 금형 등 적용 방식을 분명히 적으세요.'},
+ {id:'print',title:'인쇄 방법을 기재했는가?',detail:'실크스크린·UV 등 인쇄 방식, 단면·양면, 인쇄 색상 수를 기재하세요.'},
+ {id:'coating',title:'코팅 여부를 기재했는가?',detail:'코팅 유무와 적용 면(단면·양면, 바깥쪽·안쪽), 무광·유광을 적으세요.',materials:['도자기','패브릭','플라스틱']},
+ {id:'material-name',title:'소재의 종류와 이름이 기입되었는가?',detail:'소재의 정확한 종류와 명칭을 업계 표준 용어로 기재하세요.',materials:['가죽','금속','도자기','패브릭','플라스틱','기타 / 미정']},
+ {id:'bag-seam',title:'봉제선이 있는가?',detail:'봉제 위치와 필요한 봉제선을 도안 또는 설명에 표시하세요.',items:['가방','파우치'],materials:['가죽','패브릭']},
+ {id:'seam-allowance',title:'시접 포함인가?',detail:'시접 포함 여부와 시접 폭(mm), 측정 기준을 적으세요.',items:['가방','파우치'],materials:['가죽','패브릭']},
+ {id:'label-position',title:'라벨 / 택의 위치를 기입했는가?',detail:'왼쪽·오른쪽, 위쪽·아래쪽 기준점에서 몇 mm인지 적으세요.',items:['가방','파우치']},
+ {id:'accessories',title:'부자재 결합 방식을 기입했는가?',detail:'부자재 종류와 결합 위치·방법을 표시하세요.',items:['가방','파우치']},
+ {id:'structure',title:'구조를 설명한 글과 이미지가 충분한가?',detail:'제작자가 구조를 이해할 수 있도록 설명과 이미지가 서로 보완되는지 확인하세요.',items:['가방','파우치']},
+ {id:'assembly',title:'조립 및 접착 방법을 기재했는가?',detail:'조립 순서와 접착 방식을 단계별로 적으세요.',items:['가방','키체인','텀블러']},
+ {id:'package-fit',title:'패키지에 제품이 알맞게 들어가는가?',detail:'박스 내경과 제품 외경을 대조하고, 실제 샘플로 수납 상태를 확인하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-structure',title:'패키지 박스 구조와 종류를 설명하는 이미지와 텍스트가 일치하는가?',detail:'패키지 구조 이미지와 설명 문구가 같은 형태와 종류를 가리키는지 확인하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-direction',title:'패키지 포장 방향을 기입했는가?',detail:'제품이 패키지 안에 놓이는 방향과 개봉 방향을 표시하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-cushion',title:'패키지 내부 완충재 내용을 기입했는가?',detail:'완충재의 종류와 제품을 고정하는 위치를 적으세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-art',title:'패키지 도안에 문제가 없는가?',detail:'도안 크기, 접는 선, 재단선, 인쇄 영역을 확인하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-count',title:'패키지에 들어가는 제품의 구성과 수량이 일치하는가?',detail:'패키지별 구성품과 수량을 작업지시서 및 발주 수량과 대조하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'package-pattern',title:'패키지에 패턴을 넣을 때 패턴이 정확한가?',detail:'패턴 방향·반복 간격·색상과 재단 후 연결 상태를 확인하세요.',packages:['PET(투명)','단상자','슬리브','싸바리']},
+ {id:'last-ai',title:'마지막 AI 검토',detail:'최종 파일을 다시 검토하고 누락·불일치 사항을 확인하세요.'}
+];
+const STORE='denote-checklist-v1';let state=loadState();let activeId=state.activeId||null;
+function loadState(){try{return JSON.parse(localStorage.getItem(STORE))||{projects:[],activeId:null}}catch{return{projects:[],activeId:null}}}
+function save(){state.activeId=activeId;localStorage.setItem(STORE,JSON.stringify(state));render()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function progress(p){let list=matching(p);let n=list.filter(x=>p.done?.[x.id]).length;return {n,total:list.length,pct:list.length?Math.round(n*100/list.length):0}}
+function matching(p){return LIBRARY.filter(x=>['brands','items','materials','packages'].every(k=>!x[k]||!x[k].length||x[k].includes(p[k]))) }
+function renderProjects(){const el=document.querySelector('#projectList');el.innerHTML=state.projects.length?state.projects.map(p=>{let pr=progress(p);return `<button class="project-link ${p.id===activeId?'active':''}" data-id="${esc(p.id)}"><b>${esc(p.name)}</b><span><span class="mini-track"><i style="width:${pr.pct}%"></i></span>${pr.pct}%</span></button>`}).join(''):`<div style="padding:8px 10px;color:#899188;font-size:12px">아직 프로젝트가 없어요.</div>`;el.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{activeId=b.dataset.id;render()})}
+function detailHtml(s){if(!s)return '<div class="detail missing">세부 내용이 원본에 등록되지 않았어요.</div>';const lines=s.split('\n').map(x=>x.trim()).filter(Boolean);if(lines.length>1)return `<div class="detail"><ul>${lines.map(x=>`<li>${esc(x.replace(/^[-•]\s*/,''))}</li>`).join('')}</ul></div>`;return `<div class="detail"><p>${esc(s)}</p></div>`}
+function render(){renderProjects();const p=state.projects.find(x=>x.id===activeId);document.querySelector('#crumbName').textContent=p?.name||'프로젝트 선택';const host=document.querySelector('#workspace');if(!p){host.innerHTML=`<div class="main-head"><div><div class="eyebrow">Project workspace</div><h1 class="title">프로젝트별 검수, 한곳에서</h1><p class="sub">프로젝트를 만들고 분류값을 선택하면, 필요한 항목만 바로 체크할 수 있어요.</p></div><button class="primary" id="newProject">＋ 프로젝트 만들기</button></div><div class="empty"><b>첫 프로젝트를 만들어 보세요</b>브랜드·품목·소재·패키지 선택에 맞는 체크리스트가 준비됩니다.</div><p class="footer-note">체크리스트 라이브러리는 항목을 복제하지 않고 프로젝트가 함께 참조합니다.</p>`;document.querySelector('#newProject').onclick=openDialog;return}
+ const items=matching(p),pr=progress(p);host.innerHTML=`<div class="main-head"><div><div class="eyebrow">${esc(p.brands)} · ${esc(p.items)}</div><h1 class="title">${esc(p.name)}</h1><p class="sub">${esc(p.materials)} · ${esc(p.packages)}</p></div><button class="primary" id="newProject">＋ 프로젝트 추가</button></div><div class="summary"><div class="stat"><label>이 프로젝트 진행률</label><div class="stat-main"><strong>${pr.n} <span style="font-size:13px;color:#879188;font-weight:500">/ ${pr.total} 항목 완료</span></strong><div class="progress-ring" style="--p:${pr.pct}%" data-value="${pr.pct}%"></div></div></div><div class="stat"><label>남은 항목</label><strong>${Math.max(pr.total-pr.n,0)}개</strong></div><div class="stat"><label>선택 분류</label><strong style="font-size:14px">${esc(p.items)} · ${esc(p.materials)}</strong></div></div><div class="filters"><div class="field"><label>브랜드</label><select data-filter="brand">${optionsHTML('brands',p.brands)}</select></div><div class="field"><label>품목</label><select data-filter="item">${optionsHTML('items',p.items)}</select></div><div class="field"><label>소재</label><select data-filter="material">${optionsHTML('materials',p.materials)}</select></div><div class="field"><label>패키지</label><select data-filter="packages">${optionsHTML('packages',p.packages)}</select></div></div><div class="list-top"><strong>검수 체크리스트</strong><span>${items.length}개 항목 · 분류 변경 시 바로 반영</span></div><div class="checklist">${items.map(x=>`<article class="check ${p.done?.[x.id]?'done':''}"><div class="check-row"><input type="checkbox" aria-label="${esc(x.title)} 완료" data-check="${esc(x.id)}" ${p.done?.[x.id]?'checked':''}><div class="check-title">${esc(x.title)}</div><span class="tag">${x.packages?'패키지':x.materials?'소재':x.items?'품목':'공통'}</span></div>${detailHtml(x.detail)}</article>`).join('')}</div><p class="footer-note">항목은 공통 라이브러리에서 불러옵니다. 완료 상태는 이 프로젝트에만 저장돼요.</p>`;
+host.querySelector('#newProject').onclick=openDialog;host.querySelectorAll('[data-filter]').forEach(sel=>sel.onchange=()=>{const key={brand:'brands',item:'items',material:'materials',packages:'packages'}[sel.dataset.filter];p[key]=sel.value;save()});host.querySelectorAll('[data-check]').forEach(cb=>cb.onchange=()=>{p.done=p.done||{};p.done[cb.dataset.check]=cb.checked;save()});}
+function optionsHTML(key,selected){return `<option value="">선택하세요</option>${OPTIONS[key].map(o=>`<option ${o===selected?'selected':''} value="${esc(o)}">${esc(o)}</option>`).join('')}`}
+function openDialog(){for(const [id,key] of [['brand','brands'],['item','items'],['material','materials'],['pack','packages']])document.querySelector('#'+id).innerHTML=optionsHTML(key,'');document.querySelector('#projectDialog').showModal()}
+document.querySelector('#addProjectTop').onclick=openDialog;document.querySelector('#cancelProject').onclick=()=>document.querySelector('#projectDialog').close();document.querySelector('#projectForm').onsubmit=e=>{e.preventDefault();const p={id:crypto.randomUUID(),name:document.querySelector('#pname').value.trim(),brands:document.querySelector('#brand').value,items:document.querySelector('#item').value,materials:document.querySelector('#material').value,packages:document.querySelector('#pack').value,done:{}};if(!p.name||!p.brands||!p.items||!p.materials||!p.packages)return;state.projects.unshift(p);activeId=p.id;document.querySelector('#projectDialog').close();e.target.reset();save()};render();
+</script>
+</body>
+</html>
